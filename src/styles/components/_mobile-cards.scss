@@ -1,0 +1,285 @@
+/* mobile-cards
+   ========================================================================== */
+
+.v-card-preview {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: $cards-margin;
+    border-radius: $cards-radius;
+    background-color: #fff;
+    box-shadow: $cards-shadow;
+    box-sizing: border-box;
+
+    //Info-preview
+    .card-header {
+        position: relative;
+        padding: 12px 42px 6px 12px;
+
+        .avatar {
+            display: block;
+            position: absolute;
+            top: 11px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            border-radius: 50%;
+            /*background-color: $accent-color;*/
+            overflow: hidden;
+
+            i {
+                color: $accent-color;
+                font-size: 2rem;
+                line-height: 36px;
+            }
+        }
+
+        .title {
+            height: 32px;
+            line-height: 32px;
+            font-size: $big;
+            padding-left: 48px;
+            color: $text-darken;
+        }
+
+        .arrow-icon {
+            position: absolute;
+            top: 15px;
+            right: 12px;
+            font-size: 2.6rem;
+            color: #e3e3e3;
+        }
+    }
+
+    .card-body {
+        padding: 0 16px 10px 12px;
+        .content-box {
+            color: $text-primary;
+            line-height: 20px;
+            padding-left: 48px;
+            margin-bottom: 6px;
+            @include clearfix;
+
+            .info-box {
+
+                span {
+                    display: block;
+                    color: $text-secondary;
+                    font-size: $small;
+
+                    i {
+                        font-size: 1.6rem;
+                        vertical-align: sub;
+                    }
+                }
+
+            }
+
+            .content-text {
+                margin-bottom: 6px;
+                font-size: $default;
+            }
+        }
+    }
+
+    .card-footer {
+        font-size: $small;
+        padding: 4px 0;
+        border-top: 1px solid #e5eaee;
+        @include clearfix;
+
+        i {
+            font-size: 1.6rem;
+            vertical-align: sub;
+        }
+
+    }
+
+}
+
+//Card-cell
+.v-card-cell {
+    position: relative;
+    width: 100%;
+    padding: 12px 16px 6px 16px;
+    margin: $cards-margin;
+    border-radius: $cards-radius;
+    background-color: #fff;
+    box-shadow: $cards-shadow;
+    box-sizing: border-box;
+
+    .card-header {
+        position: relative;
+        width: 100%;
+        height: 24px;
+        line-height: 24px;
+        margin-bottom: 2px;
+
+        i {
+            position: absolute;
+            top: 4px;
+            left: 0;
+            font-size: 1.8rem;
+            color: $primary-color;
+            display: inline-block;
+        }
+
+        .title {
+            font-size: $large;
+            padding-left: 28px;
+        }
+    }
+
+    .card-body {
+        .content-box {
+            color: $text-primary;
+            line-height: 20px;
+            @include clearfix;
+
+            p {
+                font-size: $default;
+                padding: 4px 0;
+            }
+        }
+    }
+
+    &.uploader {
+        .file-num {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: $text-secondary;
+        }
+
+        .photo-gallery {
+            a {
+                margin: 0 10px 10px 0;
+                position: relative;
+                display: block;
+                width: 90px;
+                height: 90px;
+                float: left;
+            }
+
+            img {
+                display: block;
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 45px;
+                left: 45px;
+            }
+
+            span {
+                display: block;
+                width: 90px;
+                height: 90px;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+
+        .uploader-files {
+            list-style: none;
+            margin-top: 10px;
+
+            .file {
+                position: relative;
+                float: left;
+                margin-right: 9px;
+                margin-bottom: 9px;
+                width: 90px;
+                height: 90px;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                img {
+                    height: 100%;
+                    max-height: 100%;
+                }
+
+                .s-fail {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEu0lEQVR4Xu1bQXbaSBCtkskzu7HfM2yHnGDsxQTtQg5gICcY5wSDT5DMCUJOEHKCCHyAKKvAzCKeEwRvIe/Z2cUvtmqqhf0GpJbUkroliOkV70mq7vr9q7q6qkB44AMfuP6wBWDLAMMIXHYP925vd58S4iEgHRJAA4F/y4fLz6dIMAVCt3b26aPh5ZkxAV9pr9ohhBNWoJVPCXKQ0DkYjd/lkyP/WqsPuOzajR8EL1moUFzzoCtmRb9ifX+z75xf6RKuBQCx4z+o+tqM4kFV9QKRG4BZu/knIrwCwD1du6IiR/gKy/NOD87+dlTej3onMwBi129o9y0r3s2zgNzfEvVro8lpVjmZAJh1fz8E2nnPHzeyTqzzOwI6f4TXz7L4htQACOWRrA9FUz4JMAECoPei7vxznvTu8vNUAKyr8v8rRFcVxKN9ZzxVBUEZgPVXfqFyWnNQAuDO4X1ZN9pH7bIAoT6cHKmwQAmAecdmm88b0a0uB4nekIWLI8zjYxThqcqCVd8R8g9Gk17S+4kAzI+bPbDwdZKgNM9li5u3bVc3CCzvWc0Zu3FriwVAhLY3RJ91U5/w9ijorb8e2ydkAccV+oYIlurD8ePMAMza9oCjvD/0LWkhqTYch4Cfd+0WezBhanoHwV+10fhVlNBIBix2H9jx6R+FAgDiaLx+HBUkRQJgavcLZ4CYMIYFUgAWx171Uv/el2ACvv7RvkAKgAnPvwxmsSZwN3PEiSAFYNZpfo5JW+UmRhkAEMG7+mh8Elx8CADT9C/FB8SYQQiAr8dPumRZ73Nvc4yAMhggllNB4NNg9aIUPo/btghLX/6MAKAHLw7OxoNl3WQA6A9JA2iWxQDZcRgCYNaxv5jO9JQHAA05fbaSwgszoGPzsWl2lAcAfOSwuBVvAlsAfmIG8NYH2fewTADoW204WalfPCwAaOsDlJzglE3lV5PnQHmngMoxaCI3F0Czgt/3gwkKYxmh5bkleYFSQmH0vOfBoiYnRY2H4EqhcBGXoWDxoqiii9JlqIjr8IKVXOcHcBe/C6kwX7DvaQR9mzwh0m6eI+JvJh1h0bKVEyJiYSZy9EUrHJxPVovwuSdbWHFmUBgsUvpHAiAemEyL+xMbrg0uQyvz/vfPSymMFFYbXGgZufuxDDDJgqJqg776Hp3Wzib9KGNLKI76jVBTJuwvWq1VkqM3UYsgon/ro0lUV6qvUmJ53MyJQA5fS58vg2qkFpG3PH6/wHm76QBiRysLgFtgPRiw3D0Pqae9EJNQFU50gsvK+p2g3q67McGR5N6fyQesUHTRHudq9wd6aQXC7h9Z1y3VnsFEH7BJIKRVXskJBjfo7ua2dkzIonwmAPz4QLTKeha3z6zJhYltntvou6q0X97UVCYQdozVvokeolRuQdHb53aCUQLuEigi0jKaRwzOLyiPFvaS2uCSwMzMgCAbbrxqj2843JioOWoMaUDfRGNlXHibpLQWE5BN4l+jzQFxwXF9v7JzPchi68ZMINY0EE842G7lYMUFZ3JctGCQl+qFAxCKH26tFjvMBt3/ZW6lN5hpTXjf5+9yNHNFO56btvc/DfVThcJZBG/KN1qc4KYoK1vnFoBN3j0da/8Ped59X/3QWDIAAAAASUVORK5CYII=");
+                    background-repeat: no-repeat;
+                    background-size: 32px 32px;
+                    background-position: center;
+                    z-index: 6;
+                }
+
+            }
+
+            .uploader-progress {
+                display: block;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 2px;
+                background: $primary-color;
+            }
+
+            .uploade-file-del {
+                position: absolute;
+                right: 0;
+                top: 0;
+                opacity: 0.78;
+                z-index: 7;
+                background-color: rgba(255,255,255,.6);
+
+                i {
+                    line-height: 32px;
+                }
+            }
+        }
+        .uploader-btn {
+            float: left;
+            position: relative;
+            margin-right: 9px;
+            margin-bottom: 9px;
+            width: 90px;
+            height: 90px;
+            border: 1px solid #d9d9d9;
+
+            &::before, &::after {
+                content: " ";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                background-color: #d9d9d9;
+            }
+
+            &::before {
+                width: 2px;
+                height: 42px;
+            }
+
+            &::after {
+                width: 42px;
+                height: 2px;
+            }
+
+            .uploader_input {
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+        }
+    }
+}
+
+.touch-effect {
+    background-color: #f4f5fa;
+}
+

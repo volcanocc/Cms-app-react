@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>事件上报--事件填写</title>
+
+    <link rel="stylesheet" href="styles/main.css">
+
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="content">
+
+        <div class="v-card-cell">
+            <div class="card-header">
+                <i class="icon-title"></i>
+                <h4 class="title text-nowrap">事件标题</h4>
+            </div>
+
+            <div class="card-body">
+                <div class="content-box">
+                    <input type="text" class="v-input" placeholder="请在此输入...">
+                </div>
+            </div>
+        </div>
+
+        <div class="v-card-cell">
+            <div class="card-header">
+                <i class="icon-tag"></i>
+                <h4 class="title text-nowrap">事件类型</h4>
+            </div>
+
+            <div class="card-body">
+                <div class="content-box">
+                    <select name="" id="" class="v-select-control">
+                        <option>环保（常规）</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="v-card-cell">
+            <div class="card-header">
+                <i class="icon-content"></i>
+                <h4 class="title text-nowrap">事件内容</h4>
+            </div>
+
+            <div class="card-body">
+                <div class="content-box">
+                    <textarea rows="3" class="v-textarea" placeholder="请在此输入..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="v-card-cell">
+            <div class="card-header">
+                <i class="icon-location"></i>
+                <h4 class="title text-nowrap">定位地点</h4>
+            </div>
+            <div class="card-body">
+                <div class="content-box">
+                    <input type="text" class="v-input" placeholder="点击右侧按钮获取当前位置...">
+                </div>
+            </div>
+
+            <a href="javascript:;" class="v-button circle flat get-location-btn">
+                <i class="icon-position"></i>
+            </a>
+        </div>
+
+        <div class="v-card-cell uploader">
+            <div class="card-header">
+                <i class="icon-photo"></i>
+                <h4 class="title text-nowrap">现场照片</h4>
+                <p class="file-num">2/6</p>
+            </div>
+
+            <div class="card-body">
+                <div class="content-box pic-box">
+                    <ul class="uploader-files">
+                        <li class="file" style="background-image: url(images/upload-file.jpg);">
+                            <span class="uploader-progress" style="width: 30%"></span>
+                            <a href="javascript:;" class="v-button circle flat small uploade-file-del">
+                                <i class="icon-round_close"></i>
+                            </a>
+                            <span class="s-fail"></span>
+                        </li>
+                        <li class="file" style="background-image: url(images/upload-file.jpg);"></li>
+                    </ul>
+                    <div class="uploader-btn">
+                        <input class="uploader_input" type="file" accept="image/*" multiple="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-box">
+            <a href="javascript:;" class="v-button primary block large">提交</a>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="sys-toptips" style="display: block">topTips error ...</div>
+
+
+</body>
+</html>

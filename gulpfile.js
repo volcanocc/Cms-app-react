@@ -215,7 +215,6 @@ function connectServer(done) {
             })]
         }
     });
-    mocks(rest);
     done();
 }
 

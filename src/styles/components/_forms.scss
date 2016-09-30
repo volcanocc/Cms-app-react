@@ -1,0 +1,645 @@
+/* Forms
+   ========================================================================== */
+select:focus {
+    outline: none;
+}
+
+label {
+    font-size: $label-font-size;
+    color: $label-color;
+    line-height: 2;
+}
+
+/* Text Inputs + Textarea
+   ========================================================================== */
+
+/* Style Placeholders */
+
+::-webkit-input-placeholder {
+    color: $input-placeholder-color;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: $input-placeholder-color;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: $input-placeholder-color;
+}
+
+:-ms-input-placeholder {
+    color: $input-placeholder-color;
+}
+
+/* Text inputs */
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search],
+textarea {
+
+    background-color: transparent;
+    border: $input-border;
+    border-radius: $input-radius;
+    height: $input-height;
+    width: 100%;
+    font-size: $input-font-size;
+    color: $input-color;
+    padding: $input-padding;
+    vertical-align: middle;
+    box-shadow: none;
+    box-sizing: border-box;
+    outline: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: $input-transition;
+
+    // Disabled input style
+    &:disabled,
+    &[readonly="readonly"] {
+        color: lighten($input-color, 30%);
+        -webkit-text-fill-color: lighten($input-color, 30%);
+        opacity: .52;
+        -webkit-opacity: .52;
+    }
+
+    // Focused input style
+    &:focus:not([readonly]) {
+        border: 0;
+    }
+
+}
+
+.v-input {
+    // Required dot
+    &[required] {
+        background: url("../images/cd-required.svg") no-repeat top right;
+    }
+}
+
+.v-input-group, .v-select-group {
+    position: relative;
+    margin: $input-group-margin;
+    @include clearfix;
+
+    .v-input-control, .v-select-control {
+        position: relative;
+        margin: 0 !important;
+    }
+}
+
+.v-input-control {
+
+    position: relative;
+
+    //horizontal
+    &.horizontal {
+        font-size: 0;
+        @include clearfix;
+
+        label {
+            padding-top: $horizontal-label-pdt;
+        }
+
+        input {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &.label-width {
+            label {
+                display: inline-block;
+                width: 20%;
+            }
+        }
+
+        &.small {
+            label {
+                padding-top: $horizontal-small-label-pdt;
+            }
+        }
+        &.large {
+            label {
+                padding-top: $horizontal-large-label-pdt;
+            }
+        }
+
+        .warning {
+            right: 6px;
+        }
+
+        @media (max-width: $media-screen-small) {
+            label {
+                text-align: left !important;
+            }
+        }
+    }
+
+    //Inline
+    &.inline {
+
+        display: inline-block;
+        margin: $input-control-inline-margin;
+
+        input, .v-input-file {
+            width: auto;
+            margin-right: $input-margin-right;
+        }
+
+        &.label-width {
+
+            label {
+                display: inline-block;
+                width: $input-control-inline-label-width;
+                vertical-align: middle;
+                line-height: 1;
+            }
+
+        }
+
+        &.radius {
+
+            label {
+                margin-left: 0;
+            }
+        }
+
+        .warning {
+            right: 16px;
+        }
+    }
+
+    //Radius
+    &.radius {
+
+        input {
+            border-radius: $input-height / 2;
+        }
+        label {
+            margin-left: $input-control-radius-margin-left;
+        }
+
+        .warning {
+            right: 12px;
+        }
+
+        + .tips {
+            margin-left: $select-group-radius-margin-left;
+        }
+    }
+
+    //Size
+    &.large {
+
+        input {
+            height: $input-large;
+        }
+
+    }
+
+    &.small {
+
+        input {
+            height: $input-small;
+        }
+
+    }
+
+    //State
+    &.error {
+
+        input {
+            border: 0;
+            box-shadow: $shadow-dn;
+
+            &:focus:not([readonly]) {
+                border: 0;
+                box-shadow: $shadow-dn;
+            }
+        }
+
+    }
+}
+
+//Textarea style
+.v-textarea {
+    margin: 8px 0;
+    min-height: 80px;
+}
+
+/* Select Field
+   ========================================================================== */
+select {
+    width: 100%;
+    height: $select-height;
+    color: $select-color;
+    padding: $select-padding;
+    background: $select-background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAYAAABzwahEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjI0NThFRjE0NzBCODExRTZCNTNFODg3MTAzMzc2NDQ2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjI0NThFRjE1NzBCODExRTZCNTNFODg3MTAzMzc2NDQ2Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MjQ1OEVGMTI3MEI4MTFFNkI1M0U4ODcxMDMzNzY0NDYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MjQ1OEVGMTM3MEI4MTFFNkI1M0U4ODcxMDMzNzY0NDYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz67Ul3VAAAG20lEQVR42txb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");
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    background-position: right center;
+    border: $select-border;
+    border-radius: $select-radius;
+    vertical-align: middle;
+    box-shadow: none;
+    outline: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+
+    // Disabled select style
+    &:disabled,
+    &[readonly="readonly"] {
+
+        cursor: default;
+        opacity: .52;
+
+        label {
+            color: $select-disabled-color;
+        }
+
+        select {
+            color: $select-disabled-color;
+            border: $select-disabled-border;
+        }
+
+    }
+
+    // Disabled label style
+    &:disabled + label,
+    &[readonly="readonly"] + label {
+        color: $select-disabled-color;
+    }
+
+    // Focused select style
+    &:focus:not([readonly]) {
+        border: 0;
+        outline: none;
+    }
+
+    option {
+        color: $select-option-color;
+    }
+
+}
+
+.v-select-control {
+
+    position: relative;
+    margin: $select-group-margin;
+
+    //horizontal
+    &.horizontal {
+        @include clearfix;
+
+        label {
+            padding-top: $horizontal-label-pdt;
+        }
+
+        &.label-width {
+            label {
+                display: inline-block;
+                width: 20%;
+            }
+        }
+
+        &.small {
+            label {
+                padding-top: $horizontal-small-label-pdt;
+            }
+        }
+        &.large {
+            label {
+                padding-top: $horizontal-large-label-pdt;
+            }
+        }
+
+        .warning {
+            right: 6px;
+        }
+
+        @media (max-width: $media-screen-small) {
+            label {
+                text-align: left !important;
+            }
+        }
+    }
+
+    //Inline
+    &.inline {
+
+        display: inline-block;
+        margin: $input-control-inline-margin;
+
+        select {
+            min-width: 130px;
+            width: auto;
+            margin-right: $select-margin-right;
+        }
+
+        &.label-width {
+
+            label {
+                display: inline-block;
+                min-width: $select-group-inline-label-width;
+            }
+
+        }
+
+        &.radius {
+
+            label {
+                margin-left: 0;
+            }
+        }
+
+        .warning {
+            right: 16px;
+        }
+    }
+
+    //Radius
+    &.radius {
+
+        select {
+            border-radius: $select-height / 2;
+        }
+        label {
+            margin-left: $select-group-radius-margin-left;
+        }
+
+        &.large {
+            border-radius: $select-large / 2;
+        }
+
+        &.small {
+            border-radius: $select-small / 2;
+        }
+
+        .warning {
+            right: 12px;
+        }
+
+        + .tips {
+            margin-left: $select-group-radius-margin-left;
+        }
+
+    }
+
+    //Size
+    &.large {
+
+        select {
+            height: $select-large;
+            border-radius: $select-radius;
+        }
+
+    }
+
+    &.small {
+
+        select {
+            height: $select-small;
+            border-radius: $select-radius;
+        }
+
+    }
+
+    //State
+    &.error {
+
+        select {
+            border: 1px solid $select-error-color;
+            box-shadow: $select-error-shadow;
+
+            &:focus:not([readonly]) {
+                border: 1px solid $select-error-color;
+                box-shadow: $select-error-shadow;
+            }
+        }
+
+    }
+
+}
+
+/* Tips
+   ========================================================================== */
+.v-input-control, .v-input-group, .v-select-control, .v-select-group, .v-check, .v-radio {
+
+    .tips {
+        color: $tips-color;
+        font-size: $tips-font;
+
+        &.info {
+            color: $info-color;
+        }
+        &.error {
+            color: $error-color;
+        }
+        &.success {
+            color: $success-color;
+        }
+    }
+
+    .warning {
+        position: absolute;
+        right: 0;
+        bottom: 8px;
+        max-width: 50%;
+        word-break: break-all;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: 21px;
+        line-height: 21px;
+        color: $tips-color;
+        font-size: $tips-font;
+        background-color: #fff;
+
+        &.info {
+            color: $info-color;
+        }
+        &.error {
+            color: $error-color;
+        }
+        &.success {
+            color: $success-color;
+        }
+    }
+}
+
+/* Checkbox & Radio
+   ========================================================================== */
+.v-check, .v-radio {
+    display: inline-block;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    margin: $checkbox-radio-margin;
+
+    &.label-width {
+        label {
+            display: inline-block;
+            min-width: $checkbox-radio-label-width;
+        }
+    }
+
+    .warning {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    &.info {
+        label {
+            color: $info-color;
+        }
+    }
+    &.error {
+        label {
+            color: $error-color;
+        }
+    }
+    &.success {
+        label {
+            color: $success-color;
+        }
+    }
+}
+
+input[type=radio],
+input[type=checkbox] {
+    /* hide original check and radio buttons */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    z-index: 2;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    padding-left: 24px;
+}
+
+input[type="radio"] + label::before,
+input[type="radio"] + label::after,
+input[type="checkbox"] + label::before,
+input[type="checkbox"] + label::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+}
+
+input[type="radio"] + label::before,
+input[type="checkbox"] + label::before {
+    border: 1px solid #cfd9db;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+input[type="radio"] + label::before,
+input[type="radio"] + label::after {
+    border-radius: $radio-radius;
+}
+
+input[type="checkbox"] + label::before,
+input[type="checkbox"] + label::after {
+    border-radius: $checkbox-radius;
+}
+
+input[type="radio"] + label::after,
+input[type="checkbox"] + label::after {
+    background-color: $checkbox-radio-background;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: none;
+}
+
+input[type="radio"] + label::after {
+    background-image: url("../images/cd-icon-radio.svg");
+}
+
+input[type="checkbox"] + label::after {
+    background-image: url("../images/cd-icon-check.svg");
+}
+
+input[type="radio"]:focus + label::before,
+input[type="checkbox"]:focus + label::before {
+    box-shadow: $checkbox-radio-shadow;
+}
+
+input[type="radio"]:checked + label::after,
+input[type="checkbox"]:checked + label::after {
+    display: block;
+}
+
+input[type="radio"]:checked + label::before,
+input[type="radio"]:checked + label::after,
+input[type="checkbox"]:checked + label::before,
+input[type="checkbox"]:checked + label::after {
+    animation: ani-bounce 0.3s;
+}
+
+@keyframes ani-bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+}
+
+/* Input type=file
+   ========================================================================== */
+.v-input-file {
+    width: 100%;
+    cursor: pointer;
+}
+
+.v-input-file input[type="file"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 42px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.v-input-file + .file-path {
+    color: #666;
+}
+
+.v-input-control {
+    &.inline {
+        .file-path {
+            padding-left: 12px;
+        }
+    }
+}
+
+
+
+
