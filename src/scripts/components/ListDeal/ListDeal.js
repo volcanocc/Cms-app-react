@@ -4,7 +4,7 @@
 
 var React = require('react');
 var DealCard = require('./DealCard.js');
-var MockData = require('../../../mocks/ListDealData.js');
+var MockData = require('../../../../mocks/ListDealData.js');
 
 var ListDeal = React.createClass({
     getInitialState: function () {
@@ -35,7 +35,7 @@ var ListDeal = React.createClass({
         return (
             <span>
                 <div className="top-bar">
-                    <a href="javascript:;" className="add-event-btn">
+                    <a href="#/DetailReport" className="add-event-btn">
                         <i className="icon-round_add" style={{fontSize: '2rem'}}></i>
                         <span>添加事件</span>
                     </a>

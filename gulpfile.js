@@ -18,7 +18,6 @@ var webpackConfig = require("./webpack.config.js");
 
 var connect = require('gulp-connect');
 var rest = require('connect-rest');
-var mocks = require('./mocks');
 
 /**
  * ----------------------------------------------------
