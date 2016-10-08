@@ -29,7 +29,8 @@ var src = {
     html: "src/html/*.html",                          // html 文件
     vendor: ["vendor/**/*", "bower_components/**/*"], // vendor 目录和 bower_components
     styles: "src/styles/*.scss",                      // styles 目录下所有*.scss
-    assets: "assets/**/*"                             // 图片等应用资源
+    assets: "assets/**/*",                            // 图片等应用资源
+    server: "src/server/*"                            // server
 };
 
 var tmp = {
@@ -37,7 +38,8 @@ var tmp = {
     html: "tmp/",
     styles: "tmp/styles",
     vendor: "tmp/vendor",
-    assets: "tmp/assets"
+    assets: "tmp/assets",
+    server: "tmp/server"
 };
 
 var dist = {
@@ -45,7 +47,8 @@ var dist = {
     html: "dist/",
     styles: "dist/styles",
     vendor: "dist/vendor",
-    assets: "dist/assets"
+    assets: "dist/assets",
+    server: "dist/server"
 };
 
 /**
@@ -90,6 +93,15 @@ function copyVendor() {
 function copyAssets() {
     return gulp.src(src.assets)
         .pipe(gulp.dest(tmp.assets));
+}
+
+/**
+ * [copyServer description]
+ * @return {[type]} [description]
+ */
+function copyServer() {
+    return gulp.src(src.server)
+        .pipe(gulp.dest(tmp.server));
 }
 
 /**
@@ -225,6 +237,7 @@ function watch() {
     gulp.watch(src.html, html);
     gulp.watch("src/**/*.js", webpackDevelopment);
     gulp.watch("src/**/*.scss", styles);
+    gulp.watch("src/server/*.php", copyServer);
     gulp.watch("tmp/**/*").on('change', function (file) {
         gulp.src('tmp/')
             .pipe(connect.reload());
@@ -236,7 +249,7 @@ function watch() {
  */
 gulp.task("serve", gulp.series(
     clean,
-    gulp.parallel(copyAssets, copyVendor, html, styles, webpackDevelopment),
+    gulp.parallel(copyAssets, copyServer, copyVendor, html, styles, webpackDevelopment),
     connectServer,
     watch
 ));
@@ -246,7 +259,7 @@ gulp.task("serve", gulp.series(
  */
 gulp.task("build", gulp.series(
     clean,
-    gulp.parallel(copyAssets, copyVendor, html, styles, webpackProduction),
+    gulp.parallel(copyAssets, copyServer, copyVendor, html, styles, webpackProduction),
     cleanDist,
     copyTmp,
     function (done) {

@@ -14,7 +14,7 @@ import { Router, Route, hashHistory } from 'react-router';
 ReactDOM.render((
         <Router history={hashHistory}>
             <Route path="/" component={ListDeal} />
-            <Route path="DetailReport" component={DetailReport} />
+            <Route path="/DetailReport" component={DetailReport} />
         </Router>
     ),
     document.getElementById('app')

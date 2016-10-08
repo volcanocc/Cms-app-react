@@ -4,7 +4,6 @@
 
 var React = require('react');
 var DealCard = require('./DealCard.js');
-var MockData = require('../../../../mocks/ListDealData.js');
 
 var ListDeal = React.createClass({
     getInitialState: function () {
@@ -16,13 +15,14 @@ var ListDeal = React.createClass({
     componentWillMount: function () {
         this.props.sysLoadingShow();
         $.ajax({
+            url: 'http://localhost/server/getEventList.php',
             type: 'GET',
-            url: 'Event/ListDealData',
             dataType: 'json',
-            success: function (MockData) {
-                this.setState({
-                    list: MockData.list
-                });
+            success: function (data) {
+                console.log(data);
+                /*this.setState({
+                    list: data.list
+                });*/
                 this.props.sysLoadingHide();
             }.bind(this),
             error: function () {

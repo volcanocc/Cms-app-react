@@ -5,7 +5,6 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var ListDeal = require('./ListDeal.js');
 
-import { Router, Route, hashHistory } from 'react-router';
 
 var Wrapper = React.createClass({
     getInitialState: function () {
