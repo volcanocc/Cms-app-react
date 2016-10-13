@@ -3,20 +3,21 @@
  */
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ListDeal = require('./components/ListDeal/index.js');
-var DetailReport = require('./components/DetailReport/index.js');
+import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 
-import { Router, Route, hashHistory } from 'react-router';
-
-
+var EventList = require('./components/EventList.js');
+var AddEvent = require('./components/AddEvent.js');
+var EventDetail = require('./components/EventDetail.js');
 
 
 ReactDOM.render((
-        <Router history={hashHistory}>
-            <Route path="/" component={ListDeal} />
-            <Route path="/DetailReport" component={DetailReport} />
-        </Router>
-    ),
-    document.getElementById('app')
-);
 
+    <Router history={browserHistory}>
+        <Route path="/" component={EventList} />
+        <Route path="EventDetail" component={EventDetail} />
+        <Route path="AddEvent" component={AddEvent} />
+    </Router>
+
+    ),document.getElementById('app')
+
+);

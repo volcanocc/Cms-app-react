@@ -4,7 +4,11 @@
 
 var React = require('react');
 
-var DealCard = React.createClass({
+import {Link} from 'react-router';
+
+
+
+var CardList = React.createClass({
     getInitialState: function () {
         return ({
             data: []
@@ -19,7 +23,7 @@ var DealCard = React.createClass({
                 {
                     this.state.data.map(function (item, i) {
                         return (
-                            <a href="#" className="v-card-preview" key={i}>
+                            <Link to="EventDetail" className="v-card-preview" key={i} data-id={item.id}>
                                 <div className="card-header">
                                     <span className="avatar">
                                         <i className="icon-event"></i>
@@ -43,7 +47,7 @@ var DealCard = React.createClass({
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         )
                     }.bind(this))
                 }
@@ -57,4 +61,4 @@ var DealCard = React.createClass({
 
 });
 
-module.exports = DealCard;
+module.exports = CardList;
