@@ -6,7 +6,34 @@ var React = require('react');
 
 
 var EventDetail = React.createClass({
-    render:function () {
+
+    getInitialState: function () {
+        return ({
+            itemId: this.props.params.itemId,
+            data: ''
+        })
+    },
+
+    componentWillMount: function () {
+        this.props.sysLoadingShow();
+        $.ajax({
+            url: 'http://localhost/server/getCurEventDetail.php',
+            type: 'GET',
+            data: {id: this.state.itemId},
+            dataType: 'json',
+            success: function (data) {
+                this.setState({
+                    data: data['list'][0]
+                });
+                this.props.sysLoadingHide();
+            }.bind(this),
+            error: function (data) {
+
+            }.bind(this)
+        })
+    },
+
+    render: function () {
         return (
             <div className="wrapper">
 
@@ -14,18 +41,18 @@ var EventDetail = React.createClass({
 
                     <div className="t-card">
                         <div className="card-header">
-                            <h4 className="title">街道异物处理</h4>
+                            <h4 className="title">{this.state.data.title}</h4>
                         </div>
 
                         <div className="card-body">
                             <div className="info-box">
                         <span>
                             <i className="icon-time-s"></i>
-                            2016-08-31 10:22:17
+                            {this.state.data.createTime}
                         </span>
                         <span>
                             <i className="icon-location-s"></i>
-                            上海浦东新区博霞路50号
+                            {this.state.data.addr}
                         </span>
                             </div>
                         </div>
@@ -40,7 +67,7 @@ var EventDetail = React.createClass({
                         <div className="card-body">
                             <div className="content-box">
                                 <p>
-                                    环保（常规）
+                                    {this.state.data.type? this.state.data.type : '暂无'}
                                 </p>
                             </div>
                         </div>
@@ -55,7 +82,7 @@ var EventDetail = React.createClass({
                         <div className="card-body">
                             <div className="content-box">
                                 <p>
-                                    人行道表面有不明物体挡住去路，查明后请尽快清理干净。
+                                    {this.state.data.content}
                                 </p>
                             </div>
                         </div>

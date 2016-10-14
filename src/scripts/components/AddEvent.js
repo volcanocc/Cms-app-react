@@ -3,7 +3,7 @@
  */
 
 var React = require('react');
-import {browserHistory} from 'react-router'
+import {hashHistory} from 'react-router'
 
 var AddEvent = React.createClass({
     getInitialState: function () {
@@ -71,13 +71,6 @@ var AddEvent = React.createClass({
                 toptipsClass: 'sys-toptips'
             });
         }.bind(this),3000);
-
-        setTimeout(function () {
-            this.setState({
-                toptips: '',
-                toptipsDisplay: false
-            });
-        }.bind(this), 3300);
     },
 
     eventSubmit: function (data) {
@@ -92,7 +85,7 @@ var AddEvent = React.createClass({
                 this.refs.content.value = '';
                 this.refs.addr.value = '';
 
-                browserHistory.push('/')
+                hashHistory.push('/')
 
             }.bind(this),
             error: function () {
@@ -121,7 +114,7 @@ var AddEvent = React.createClass({
 
     render: function () {
         return (
-            <div className="wrapper">
+            <div>
 
                 <div className="content">
 

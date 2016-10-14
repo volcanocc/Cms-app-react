@@ -23,7 +23,7 @@ var CardList = React.createClass({
                 {
                     this.state.data.map(function (item, i) {
                         return (
-                            <Link to="EventDetail" className="v-card-preview" key={i} data-id={item.id}>
+                            <Link to={`/EventDetail/${item.id}`} className="v-card-preview" key={i} data-id={item.id}>
                                 <div className="card-header">
                                     <span className="avatar">
                                         <i className="icon-event"></i>
